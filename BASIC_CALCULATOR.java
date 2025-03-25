@@ -1,40 +1,76 @@
-package MIDTERM;
+package midterm;
 
 import java.util.Scanner;
 
-public class BASIC_CALCULATOR {
+public class Midterm {
 
-      public static int addition(int makie,int ancla){
-        return makie + ancla;
+ 
+    public static double add(double a, double b) {
+        return a + b;
     }
-    public static int subtraction(int makie,int ancla){
-        return makie - ancla;
+
+    public static double subtract(double a, double b) {
+        return a - b;
     }
-    public static int Multiplication(int makie,int ancla){
-        return makie * ancla;
+
+    public static double multiply(double a, double b) {
+        return a * b;
     }
-    public static int Division(int makie,int ancla){
-        return makie / ancla;
+
+   
+    public static double divide(double a, double b) {
+        if (b == 0) {
+            System.out.println("Error! Division by zero.");
+            return Double.NaN;
+        }
+        return a / b;
     }
-    public static float percentage(float mc,float francis){
-        return mc * (francis/100);
-        
-    }
+
     
+    public static double percentage(double a, double percent) {
+        return (a * percent) / 100;
+    }
+
     public static void main(String[] args) {
-        
-        int result1 = addition(5,5);
-        System.out.println("Addition: " + result1);
-        int result2 = subtraction(5,5);
-        System.out.println("Subtraction: " + result2);
-        int result3 = Multiplication(5,5);
-        System.out.println("Multiplication: " + result3);
-        int result4 = Division(5,5);
-        System.out.println("Division: " + result4);
-        float result5 = percentage(100,50);
-        System.out.println("Percentage: " + result5 );
-    }
-    
+        Scanner scanner = new Scanner(System.in);
 
-    
+       
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+
+      
+        System.out.print("Enter the operation (+, -, *, /, %): ");
+        char operation = scanner.next().charAt(0);
+
+        
+        double result = 0;
+
+      
+        double num2 = 0;
+        if (operation != '%') {
+            System.out.print("Enter the second number: ");
+            num2 = scanner.nextDouble();
+        }
+
+        
+        if (operation == '+') {
+            result = add(num1, num2);
+        } else if (operation == '-') {
+            result = subtract(num1, num2);
+        } else if (operation == '*') {
+            result = multiply(num1, num2);
+        } else if (operation == '/') {
+            result = divide(num1, num2);
+        } else if (operation == '%') {
+            System.out.print("Enter the percentage value: ");
+            double percent = scanner.nextDouble();
+            result = percentage(num1, percent);
+        } else {
+            System.out.println("Invalid operation!");
+            return; 
+        }
+
+       
+        System.out.println("Result: " + result);
+    }
 }
